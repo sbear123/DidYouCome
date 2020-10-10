@@ -31,11 +31,14 @@ public class LoginDBBean extends CommonDBBean{
 				user = new UserBean();
 				user.setUserId(rs.getString("userid"));
 				user.setPassword(rs.getString("password"));
+				ShoolNameDBBean name = new ShoolNameDBBean();
+				user.setShool(name.name(rs.getInt("shool")));
+				user.setName(rs.getString("name"));
+				user.setType(rs.getString("type"));
 			}
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

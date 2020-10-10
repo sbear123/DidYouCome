@@ -19,17 +19,21 @@ public class LoginJsonAction implements Action {
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		ResultBean result = new ResultBean(); // return�뿉 �뵲�씪 �떖�씪吏��뒗 遺�遺� 
+		ResultBean result = new ResultBean(); 
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
-		UserBean requestUser = gson.fromJson(str, UserBean.class); // input�뿉 �뵲�씪 �떖�씪吏��뒗 遺�遺� 
+		UserBean requestUser = gson.fromJson(str, UserBean.class);
 		
 		System.out.println(str);
 		
-		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserId(), requestUser.getPassword());
-		if(user!=null)
+		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserid(), requestUser.getPassword());
+		if(user!=null) {
 			result.result="ok";
+			result.setName(user.getName());
+			result.setShool(user.getShool());
+			result.setType(user.getType());
+		}
 		
 		return gson.toJson(result, ResultBean.class);
 	}

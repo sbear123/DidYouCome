@@ -24,7 +24,6 @@ public class RegisterJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		UserBean requestUser = gson.fromJson(str, UserBean.class); 
 		
-		System.out.println(requestUser.getUserId() + requestUser.getPassword() + requestUser.getName());
 		int count = RegisterDBBean.getInstance().register(requestUser);
 		if(count==1)
 			result.result="ok";

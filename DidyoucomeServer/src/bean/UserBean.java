@@ -2,31 +2,19 @@ package bean;
 
 public class UserBean {
 	
-	private String userId;
+	private String userid;
 	private String password;
 	private String name;
-	private String email;
-	
-	public UserBean() {}
-	
-	public UserBean(String userid, String password) {
-		this.userId = userid;
-		this.password = password;
-	}
-	
-	public UserBean(String userId, String password, String name, String email) {
-		this.userId = userId;
-		this.password = password;
-		this.name = name;
-		this.email = email;
-	}
+	private String shool;
+	private int shoolnum;
+	private String type;
 
-	public String getUserId() {
-		return userId;
+	public String getUserid() {
+		return userid;
 	}
 
 	public void setUserId(String userid) {
-		this.userId = userid;
+		this.userid = userid;
 	}
 
 	public String getPassword() {
@@ -45,12 +33,28 @@ public class UserBean {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getShool() {
+		return shool;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setShool(String shool) {
+		this.shool = shool;
+	}
+
+	public int getShoolnum() {
+		return shoolnum;
+	}
+
+	public void setShoolnum(int shoolnum) {
+		this.shoolnum = shoolnum;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }
