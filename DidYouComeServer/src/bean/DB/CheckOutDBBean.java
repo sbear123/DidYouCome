@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 
-public class CheckInDBBean extends CommonDBBean{
+public class CheckOutDBBean extends CommonDBBean{
 	//Singleton
-	private static CheckInDBBean instance = new CheckInDBBean();
-	private CheckInDBBean() {}
-	public static CheckInDBBean getInstance() {
+	private static CheckOutDBBean instance = new CheckOutDBBean();
+	private CheckOutDBBean() {}
+	public static CheckOutDBBean getInstance() {
 		return instance;
 	}
 	
-	public int checkIn(String userid) {
+	public int checkOut(String userid) {
 		int result = 0;
 		Connection conn = getConnection();
 		if(conn==null) return 0;
@@ -22,7 +22,7 @@ public class CheckInDBBean extends CommonDBBean{
 		String sql = "UPDATE user SET check =? WHERE userid = ?;";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "입실");
+			pstmt.setString(1, "퇴실");
 			pstmt.setString(2, userid);
 			
 			result = pstmt.executeUpdate();
