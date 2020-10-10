@@ -31,7 +31,7 @@ public class LoginDBBean extends CommonDBBean{
 				user = new UserBean();
 				user.setUserId(rs.getString("userid"));
 				user.setPassword(rs.getString("password"));
-				ShoolNameDBBean name = new ShoolNameDBBean();
+				GetShoolDBBean name = new GetShoolDBBean();
 				user.setShool(name.name(rs.getInt("shool")));
 				user.setName(rs.getString("name"));
 				user.setType(rs.getString("type"));
