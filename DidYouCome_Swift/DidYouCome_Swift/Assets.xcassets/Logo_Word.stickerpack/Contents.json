@@ -1,0 +1,47 @@
+{
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "grid-size" : "small"
+  },
+  "stickers" : [
+    {
+      "filename" : "icon_20.sticker"
+    },
+    {
+      "filename" : "icon_29.sticker"
+    },
+    {
+      "filename" : "icon_40.sticker"
+    },
+    {
+      "filename" : "icon_58.sticker"
+    },
+    {
+      "filename" : "icon_60.sticker"
+    },
+    {
+      "filename" : "icon_80.sticker"
+    },
+    {
+      "filename" : "icon_87.sticker"
+    },
+    {
+      "filename" : "icon_120.sticker"
+    },
+    {
+      "filename" : "icon_152.sticker"
+    },
+    {
+      "filename" : "icon_167.sticker"
+    },
+    {
+      "filename" : "icon_180.sticker"
+    },
+    {
+      "filename" : "icon_1024.sticker"
+    }
+  ]
+}
