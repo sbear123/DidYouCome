@@ -34,7 +34,7 @@ public class LoginDBBean extends CommonDBBean{
 				GetSchoolDBBean name = new GetSchoolDBBean();
 				user.setSchool(name.name(rs.getInt("school")));
 				user.setName(rs.getString("name"));
-				user.setType(rs.getInt("type"));
+				user.setTypeId(rs.getInt("type"));
 			}
 			rs.close();
 			pstmt.close();

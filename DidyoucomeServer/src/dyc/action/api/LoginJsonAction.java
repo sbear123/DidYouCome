@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import bean.ResultBean;
 import bean.UserBean;
 import bean.DB.LoginDBBean;
+import bean.DB.TypeDBBean;
 import dyc.action.Action;
 
 public class LoginJsonAction implements Action {
@@ -32,11 +33,9 @@ public class LoginJsonAction implements Action {
 			result.result="ok";
 			result.setName(user.getName());
 			result.setSchool(user.getSchool());
-			if (user.getType() == 1) {
-				result.setType("teacher");
-			}else {
-				result.setType("student");
-			}
+			TypeDBBean type = new TypeDBBean();
+			String types = type.name(user.getTypeId());
+			result.setType(types);
 		}
 		
 		return gson.toJson(result, ResultBean.class);
