@@ -22,17 +22,17 @@ public class RegisterDBBean extends CommonDBBean {
 			conn = getConnection();
 			if(conn==null) return 0;
 		
-			String sql1 = "select * from shool where name=?";
+			String sql1 = "select * from school where name=?";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql1);
-				pstmt.setString(1, user.getShool());
+				pstmt.setString(1, user.getSchool());
 				
 				ResultSet rs = pstmt.executeQuery();
 				if(rs.next()) {
-					user.setShoolnum(rs.getInt("id"));
+					user.setSchoolnum(rs.getInt("id"));
 					makeUser(user);
 				} else {
-					user.setShoolnum(makeShool(user.getShool()));
+					user.setSchoolnum(makeShool(user.getSchool()));
 					makeUser(user);
 				}
 				rs.close();
@@ -46,8 +46,7 @@ public class RegisterDBBean extends CommonDBBean {
 		}
 		
 		private int makeShool(String name) {
-			int id = 0;
-			String sql = "insert into shool(name) values (?)";
+			String sql = "insert into school(`name`) values (?)";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, name);
@@ -58,31 +57,20 @@ public class RegisterDBBean extends CommonDBBean {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			String sql1 = "select * from shool where name=?";
-			try {
-				PreparedStatement pstmt = conn.prepareStatement(sql1);
-				pstmt.setString(1, name);
-				ResultSet rs = pstmt.executeQuery();
-				if(rs.next()) {
-					id = rs.getInt("id");
-				}
-				rs.close();
-				pstmt.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return id;
+			GetSchoolDBBean school = new GetSchoolDBBean();
+			return school.id(name);
 		}
 		
 		private void makeUser(UserBean user) {
-			String sql = "insert into user(userid, password, name, shool, type) values (?,?,?,?,?)";
+			String sql = "INSERT INTO user (`userid`, `password`, `name`, `school`, `type`, `check`) VALUES (?,?,?,?,?,?)";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user.getUserid());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getName());
-				pstmt.setInt(4, user.getShoolnum());
-				pstmt.setBoolean(5, false);
+				pstmt.setInt(4, user.getSchoolnum());
+				pstmt.setInt(5, 0);
+				pstmt.setInt(6, 0);
 				
 				result = pstmt.executeUpdate();
 				if(pstmt!=null) pstmt.close();

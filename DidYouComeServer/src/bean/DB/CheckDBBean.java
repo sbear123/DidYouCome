@@ -28,7 +28,12 @@ public class CheckDBBean  extends CommonDBBean{
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				result = new CheckBean();
-				result.setCheck(rs.getString("check"));
+				result.setCheck(rs.getInt("check"));
+				if (result.getCheck() == 1) {
+					result.setCheckType("입실");
+				}else {
+					result.setCheckType("퇴실");
+				}
 				result.setName(rs.getString("name"));
 				result.setTime(rs.getString("time"));
 			}

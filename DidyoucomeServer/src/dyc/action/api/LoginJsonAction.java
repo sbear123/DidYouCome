@@ -31,8 +31,12 @@ public class LoginJsonAction implements Action {
 		if(user!=null) {
 			result.result="ok";
 			result.setName(user.getName());
-			result.setShool(user.getShool());
-			result.setType(user.getType());
+			result.setSchool(user.getSchool());
+			if (user.getType() == 1) {
+				result.setType("teacher");
+			}else {
+				result.setType("student");
+			}
 		}
 		
 		return gson.toJson(result, ResultBean.class);

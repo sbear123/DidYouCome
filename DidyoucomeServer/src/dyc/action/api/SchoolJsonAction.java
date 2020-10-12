@@ -9,10 +9,10 @@ import com.google.gson.Gson;
 
 import bean.ResultBean;
 import bean.UserBean;
-import bean.DB.ShoolDBBean;
+import bean.DB.SchoolDBBean;
 import dyc.action.Action;
 
-public class ShoolJsonAction implements Action {
+public class SchoolJsonAction implements Action {
 
 	@Override
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
@@ -24,7 +24,7 @@ public class ShoolJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		UserBean requestUser = gson.fromJson(str, UserBean.class); 
 		
-		int count = ShoolDBBean.getInstance().change(requestUser.getUserid(), requestUser.getShool());
+		int count = SchoolDBBean.getInstance().change(requestUser.getUserid(), requestUser.getSchool());
 		if(count==1)
 			result.result="ok";
 		

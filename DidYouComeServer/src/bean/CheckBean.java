@@ -2,7 +2,8 @@ package bean;
 
 public class CheckBean {
 	private String time;
-	private String check;
+	private int check;
+	private String checkType;
 	private String name;
 	
 	public String getTime() {
@@ -11,10 +12,10 @@ public class CheckBean {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	public String getCheck() {
+	public int getCheck() {
 		return check;
 	}
-	public void setCheck(String check) {
+	public void setCheck(int check) {
 		this.check = check;
 	}
 	public String getName() {
@@ -22,6 +23,12 @@ public class CheckBean {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getCheckType() {
+		return checkType;
+	}
+	public void setCheckType(String checkType) {
+		this.checkType = checkType;
 	}
 	
 }

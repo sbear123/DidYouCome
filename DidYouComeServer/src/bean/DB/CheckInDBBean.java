@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import bean.TimeBean;
+
 
 public class CheckInDBBean extends CommonDBBean{
 	//Singleton
@@ -18,12 +20,14 @@ public class CheckInDBBean extends CommonDBBean{
 		Connection conn = getConnection();
 		if(conn==null) return 0;
 		System.out.println("conn");
+		TimeBean time = new TimeBean();
 		
-		String sql = "UPDATE user SET check =? WHERE userid = ?;";
+		String sql = "UPDATE user SET `check`=?,`time`=? WHERE (`userid` = ?);";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "입실");
-			pstmt.setString(2, userid);
+			pstmt.setInt(1, 1);
+			pstmt.setString(2, time.getTime());
+			pstmt.setString(3, userid);
 			
 			result = pstmt.executeUpdate();
 			if(pstmt!=null) pstmt.close();

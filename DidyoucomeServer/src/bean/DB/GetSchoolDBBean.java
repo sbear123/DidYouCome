@@ -5,14 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GetShoolDBBean extends CommonDBBean{
+public class GetSchoolDBBean extends CommonDBBean{
 	public String name(int id) {
 		String name = "";
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		System.out.println("conn");
 		
-		String sql = "select * from shool where id=?";
+		String sql = "select * from school where id=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
@@ -37,7 +37,7 @@ public class GetShoolDBBean extends CommonDBBean{
 		if(conn==null) return 0;
 		System.out.println("conn");
 		
-		String sql = "select * from shool where name=?";
+		String sql = "select * from school where name=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
@@ -53,6 +53,7 @@ public class GetShoolDBBean extends CommonDBBean{
 		}
 		
 		closeConnection(conn);
+		System.out.println(id);
 		return id;
 	}
 }

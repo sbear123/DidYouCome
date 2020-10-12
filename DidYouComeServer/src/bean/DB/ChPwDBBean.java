@@ -18,7 +18,7 @@ public class ChPwDBBean extends CommonDBBean{
 		if(conn==null) return 0;
 		System.out.println("conn");
 		
-		String sql = "UPDATE user SET password =? WHERE userid = ?;";
+		String sql = "UPDATE user SET `password`=? WHERE (`userid` = ?);";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, password);

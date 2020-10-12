@@ -5,9 +5,32 @@ public class UserBean {
 	private String userid;
 	private String password;
 	private String name;
-	private String shool;
-	private int shoolnum;
-	private String type;
+	private String school;
+	private int schoolnum;
+	private int type;
+	private int check;
+	private String checkType;
+	private String time;
+
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 
 	public String getUserid() {
 		return userid;
@@ -33,28 +56,36 @@ public class UserBean {
 		this.name = name;
 	}
 
-	public String getShool() {
-		return shool;
+	public String getSchool() {
+		return school;
 	}
 
-	public void setShool(String shool) {
-		this.shool = shool;
+	public void setSchool(String shool) {
+		this.school = shool;
 	}
 
-	public int getShoolnum() {
-		return shoolnum;
+	public int getSchoolnum() {
+		return schoolnum;
 	}
 
-	public void setShoolnum(int shoolnum) {
-		this.shoolnum = shoolnum;
+	public void setSchoolnum(int shoolnum) {
+		this.schoolnum = shoolnum;
 	}
 
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
+	}
+
+	public String getCheckType() {
+		return checkType;
+	}
+
+	public void setCheckType(String checkType) {
+		this.checkType = checkType;
 	}
 	
 }

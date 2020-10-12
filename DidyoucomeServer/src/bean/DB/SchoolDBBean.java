@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ShoolDBBean extends CommonDBBean{
+public class SchoolDBBean extends CommonDBBean{
 	//Singleton
-	private static ShoolDBBean instance = new ShoolDBBean();
-	private ShoolDBBean() {}
-	public static ShoolDBBean getInstance() {
+	private static SchoolDBBean instance = new SchoolDBBean();
+	private SchoolDBBean() {}
+	public static SchoolDBBean getInstance() {
 		return instance;
 	}
 	
@@ -46,7 +46,7 @@ public class ShoolDBBean extends CommonDBBean{
 		if(conn==null) return;
 		System.out.println("conn");
 		
-		String sql = "UPDATE user SET shool =? WHERE userid = ?;";
+		String sql = "UPDATE user SET `school` =? WHERE (`userid`=?);";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, shool);
@@ -64,7 +64,7 @@ public class ShoolDBBean extends CommonDBBean{
 
 	private int makeShool(String name) {
 		int id = 0;
-		String sql = "insert into shool(name) values (?)";
+		String sql = "insert into school(`name`) values (?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, name);
