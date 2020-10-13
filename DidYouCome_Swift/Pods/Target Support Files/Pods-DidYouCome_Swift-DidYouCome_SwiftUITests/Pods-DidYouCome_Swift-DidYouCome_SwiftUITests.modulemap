@@ -1,0 +1,6 @@
+framework module Pods_DidYouCome_Swift_DidYouCome_SwiftUITests {
+  umbrella header "Pods-DidYouCome_Swift-DidYouCome_SwiftUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

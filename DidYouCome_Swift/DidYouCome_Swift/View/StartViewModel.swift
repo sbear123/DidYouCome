@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import RxSwift
 
-class ViewController: UIViewController {
+class StartViewModel: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -1,0 +1,28 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '10.0'
+
+target 'DidYouCome_Swift' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  
+  # Pods for DidYouCome_Swift
+  pod 'RxSwift', '~> 4.0'
+  pod 'RxCocoa', '~> 4.0'
+  pod 'RxRelay'
+  pod 'RxOptional'
+  pod 'RxViewController'
+
+  target 'DidYouCome_SwiftTests' do
+    inherit! :search_paths
+    # Pods for testing
+    pod 'RxTest'
+    pod 'RxBlocking'
+  end
+
+  target 'DidYouCome_SwiftUITests' do
+    # Pods for testing
+    pod 'RxTest'
+    pod 'RxBlocking'
+  end
+
+end
