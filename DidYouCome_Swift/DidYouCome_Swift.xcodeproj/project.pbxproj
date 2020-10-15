@@ -22,6 +22,7 @@
 		43672A332536C57200C6A70B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A322536C57200C6A70B /* LoginViewModel.swift */; };
 		43672A382536C76C00C6A70B /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A372536C76C00C6A70B /* UserInfoManager.swift */; };
 		43672A412536C87B00C6A70B /* LoginDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A402536C87B00C6A70B /* LoginDB.swift */; };
+		436C8B752538440B009B6F10 /* SuserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436C8B742538440B009B6F10 /* SuserView.swift */; };
 		43C815C4253678E700C4585B /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 43C815C3253678E700C4585B /* loading.gif */; };
 		43C815CC253679DE00C4585B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C815CB253679DE00C4585B /* LoadingView.swift */; };
 		43EC5F762535BA2D009A8C63 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC5F752535BA2D009A8C63 /* LoginView.swift */; };
@@ -70,6 +71,7 @@
 		43672A322536C57200C6A70B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		43672A372536C76C00C6A70B /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
 		43672A402536C87B00C6A70B /* LoginDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDB.swift; sourceTree = "<group>"; };
+		436C8B742538440B009B6F10 /* SuserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuserView.swift; sourceTree = "<group>"; };
 		43C815C3253678E700C4585B /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		43C815CB253679DE00C4585B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		43EC5F752535BA2D009A8C63 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				43EC5F752535BA2D009A8C63 /* LoginView.swift */,
 				434135582531F33700FF567F /* StartView.swift */,
 				43EC5F7A2535BA4F009A8C63 /* SignUpView.swift */,
+				436C8B742538440B009B6F10 /* SuserView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 				434135592531F33700FF567F /* StartView.swift in Sources */,
 				43EC5F7B2535BA4F009A8C63 /* SignUpView.swift in Sources */,
 				434135552531F33700FF567F /* AppDelegate.swift in Sources */,
+				436C8B752538440B009B6F10 /* SuserView.swift in Sources */,
 				434135572531F33700FF567F /* SceneDelegate.swift in Sources */,
 				43672A132536BA0E00C6A70B /* UIView+Constraints.swift in Sources */,
 				436729F02536B72B00C6A70B /* LoadingUIView.swift in Sources */,
