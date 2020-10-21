@@ -7,76 +7,76 @@
 
 import Foundation
 
-class UserModel: NSObject {
-    private var _userid: String!
-    private var _password: String!
-    private var _school: String!
-    private var _name: String!
-    private var _type: String!
+struct UserModel {
+    private var userid: String = ""
+    private var password: String = ""
+    private var school: String = ""
+    private var name: String = ""
+    private var type: String = ""
     
-    private var _check: String!
-    private var _time: String!
+    private var check: String = ""
+    private var time: String = ""
     
-    var userid: String {
+    var _userid: String {
         get {
-            return _userid
+            return userid
         }
-        set {
-            _userid = newValue
+        set(id) {
+            userid = id
         }
     }
     
-    var password: String {
+    var _password: String {
         get {
-            return _password
+            return password
         }
         set {
-            _password = newValue
+            password = newValue
         }
     }
     
-    var school: String {
+    var _school: String {
         get {
-            return _school
+            return school
         }
         set {
-            _school = newValue
+            school = newValue
         }
     }
     
-    var name: String {
+    var _name: String {
         get {
-            return _name
+            return name
         }
         set {
-            _name = newValue
+            name = newValue
         }
     }
     
-    var type: String {
+    var _type: String {
         get {
-            return _type
+            return type
         }
         set {
-            _type = newValue
+            type = newValue
         }
     }
     
-    var check: String {
+    var _check: String {
         get {
-            return _check
+            return check
         }
         set {
-            _check = newValue
+            check = newValue
         }
     }
     
-    var time: String {
+    var _time: String {
         get {
-            return _time
+            return time
         }
         set {
-            _time = newValue
+            time = newValue
         }
     }
     

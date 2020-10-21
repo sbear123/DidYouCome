@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import bean.TimeBean;
 import bean.UserBean;
 
 public class RegisterDBBean extends CommonDBBean {
@@ -62,7 +63,8 @@ public class RegisterDBBean extends CommonDBBean {
 		}
 		
 		private void makeUser(UserBean user) {
-			String sql = "INSERT INTO user (`userid`, `password`, `name`, `school`, `type`, `check`) VALUES (?,?,?,?,?,?)";
+			TimeBean time = new TimeBean();
+			String sql = "INSERT INTO user (`userid`, `password`, `name`, `school`, `type`, `check`, `time`) VALUES (?,?,?,?,?,?,?)";
 			try {
 				PreparedStatement pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user.getUserid());
@@ -71,6 +73,7 @@ public class RegisterDBBean extends CommonDBBean {
 				pstmt.setInt(4, user.getSchoolnum());
 				pstmt.setInt(5, 0);
 				pstmt.setInt(6, 0);
+				pstmt.setString(7, time.getTime());
 				
 				result = pstmt.executeUpdate();
 				if(pstmt!=null) pstmt.close();

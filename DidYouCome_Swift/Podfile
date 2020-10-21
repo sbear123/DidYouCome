@@ -11,8 +11,11 @@ target 'DidYouCome_Swift' do
   pod 'RxRelay'
   pod 'RxOptional'
   pod 'RxViewController'
+  pod 'Action'
+  pod 'NSObject+Rx'
+  pod 'RxDataSources'
+  pod 'RxCoreData'
   pod 'SwiftyGif'
-  pod 'Alamofire'
 
   target 'DidYouCome_SwiftTests' do
     inherit! :search_paths

@@ -359,8 +359,8 @@ extension Reactive where Base: UIImageView {
                         transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
                         transition.type = CATransitionType(rawValue: transitionType)
                     #else
-                        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-                        transition.type = transitionType
+                        transition.timingFunction = CAMediaTimingFunction(_name: kCAMediaTimingFunctionEaseInEaseOut)
+                        transition._type = transitionType
                     #endif
                     imageView.layer.add(transition, forKey: kCATransition)
                 }

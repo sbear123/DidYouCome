@@ -7,46 +7,56 @@
 
 import Foundation
 
-class ResultModel: NSObject {
-    private var _result: String!
+struct ResultModel {
+    private var result: String = ""
     
-    private var _school: String!
-    private var _name: String!
-    private var _type: String!
+    private var time: String = ""
+    private var name: String = ""
+    private var type: String = ""
+    private var check: Int = 0
     
-    var result: String {
+    var _result: String {
         get {
-            return _result
+            return result
         }
         set {
-            _result = newValue
+            result = newValue
         }
     }
     
-    var school: String {
+    var _time: String {
         get {
-            return _school
+            return time
         }
         set {
-            _school = newValue
+            time = newValue
         }
     }
     
-    var name: String {
+    var _name: String {
         get {
-            return _name
+            return name
         }
         set {
-            _name = newValue
+            name = newValue
         }
     }
     
-    var type: String {
+    var _type: String {
         get {
-            return _type
+            return type
         }
         set {
-            _type = newValue
+            type = newValue
+        }
+    }
+    
+    var _check: Int {
+        get {
+            return check
+        }
+        set {
+            check = newValue
         }
     }
 }
