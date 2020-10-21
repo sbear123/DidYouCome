@@ -31,12 +31,9 @@ public class LoginJsonAction implements Action {
 		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserid(), requestUser.getPassword());
 		if(user!=null) {
 			result.result="ok";
-			result.setName(user.getName());
-			result.setTime(user.getTime());
 			TypeDBBean type = new TypeDBBean();
 			String types = type.name(user.getTypeId());
 			result.setType(types);
-			result.setCheck(user.getCheck());
 		}
 		
 		return gson.toJson(result, ResultBean.class);

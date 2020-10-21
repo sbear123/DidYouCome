@@ -4,10 +4,7 @@ import java.util.List;
 
 public class ResultBean {
 	public String result;
-	private String time;
 	private String type;
-	private String name;
-	private int check;
 	
 	private List<CheckBean> user;
 
@@ -39,27 +36,4 @@ public class ResultBean {
 		this.user = user;
 	}
 
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getCheck() {
-		return check;
-	}
-
-	public void setCheck(int check) {
-		this.check = check;
-	}
 }

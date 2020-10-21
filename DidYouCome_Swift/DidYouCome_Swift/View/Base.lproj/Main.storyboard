@@ -93,7 +93,23 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="eye.slash" catalog="system"/>
+                                        <connections>
+                                            <action selector="ShowPw:" destination="0dT-2P-umj" eventType="touchUpInside" id="lPv-4w-Qx8"/>
+                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Auto Login" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEI-Xe-mei">
+                                        <rect key="frame" x="160" y="581" width="140" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FFk-un-KP4">
+                                        <rect key="frame" x="315" y="576" width="49" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="onTintColor" red="1" green="0.94437378342655542" blue="0.78059825310004716" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="thumbTintColor" red="1" green="0.67581189095025751" blue="0.34407427567896687" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.71764705880000002" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -102,13 +118,59 @@
                         <color key="backgroundColor" red="0.94117647058823528" green="0.71764705882352942" blue="0.56862745098039214" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <connections>
-                        <outlet property="lId" destination="SA2-rT-0NK" id="cYX-UZ-gw9"/>
-                        <outlet property="lPassword" destination="3en-oI-zNh" id="vEw-b5-7Wr"/>
+                        <outlet property="AutoLogin" destination="FFk-un-KP4" id="Aal-Gb-Xns"/>
+                        <outlet property="id" destination="SA2-rT-0NK" id="cYX-UZ-gw9"/>
+                        <outlet property="password" destination="3en-oI-zNh" id="vEw-b5-7Wr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rX7-mW-JwU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-493" y="106"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="kB7-fv-Xgy">
+            <objects>
+                <tableViewController id="jfQ-VK-buT" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bnx-z7-HJg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZVc-xM-IL1">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZVc-xM-IL1" id="Cxe-WS-HAk">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jfQ-VK-buT" id="nuV-WS-Msh"/>
+                            <outlet property="delegate" destination="jfQ-VK-buT" id="I3C-It-0Oy"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="4qd-Wk-4aL"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AJs-wC-ml1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="284" y="844"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="htL-v2-zer">
+            <objects>
+                <navigationController id="7KH-ID-xbm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Dm-dv-3bV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="jfQ-VK-buT" kind="relationship" relationship="rootViewController" id="1cO-rd-BbH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6t7-2J-Yu5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-603" y="844"/>
         </scene>
         <!--Sign Up View-->
         <scene sceneID="RBL-DO-rAV">
@@ -238,12 +300,18 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="eye.slash" catalog="system"/>
+                                        <connections>
+                                            <action selector="ShowPw:" destination="GZF-pC-6qE" eventType="touchUpInside" id="G7q-Qp-hgd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9c8-1U-isr">
                                         <rect key="frame" x="329" y="583" width="38" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="eye.slash" catalog="system"/>
+                                        <connections>
+                                            <action selector="ShowPwCheck:" destination="GZF-pC-6qE" eventType="touchUpInside" id="6lp-df-SGu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.65098039220000004" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -253,11 +321,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="sId" destination="Xx6-g4-dhf" id="kxl-PQ-ofJ"/>
-                        <outlet property="sName" destination="5Uw-by-Qgh" id="aDh-j8-GDI"/>
-                        <outlet property="sPassword" destination="Xj1-Du-RuP" id="dWC-zu-mVO"/>
-                        <outlet property="sPwCheck" destination="QHi-GM-Lrf" id="uGB-1w-qnX"/>
-                        <outlet property="sSchool" destination="Cgp-fD-VX9" id="S9d-mc-ZyE"/>
+                        <outlet property="id" destination="Xx6-g4-dhf" id="kxl-PQ-ofJ"/>
+                        <outlet property="name" destination="5Uw-by-Qgh" id="aDh-j8-GDI"/>
+                        <outlet property="password" destination="Xj1-Du-RuP" id="dWC-zu-mVO"/>
+                        <outlet property="pwCheck" destination="QHi-GM-Lrf" id="uGB-1w-qnX"/>
+                        <outlet property="school" destination="Cgp-fD-VX9" id="S9d-mc-ZyE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4gb-9d-gdF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

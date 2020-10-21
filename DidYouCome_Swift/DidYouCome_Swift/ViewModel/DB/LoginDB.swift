@@ -34,15 +34,6 @@ class LoginDB {
                         if let types = dJsonDic["type"]{
                             self.result._type = types as! String
                         }
-                        if let names = dJsonDic["name"]{
-                            self.result._name = names as! String
-                        }
-                        if let times = dJsonDic["time"]{
-                            self.result._time = times as! String
-                        }
-                        if let checks = dJsonDic["check"]{
-                            self.result._check = checks as! Int
-                        }
                     }
                     print(dJsonDic)
                     sem.signal()

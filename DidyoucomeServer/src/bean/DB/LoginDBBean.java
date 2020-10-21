@@ -31,13 +31,8 @@ public class LoginDBBean extends CommonDBBean{
 				user = new UserBean();
 				user.setUserId(rs.getString("userid"));
 				user.setPassword(rs.getString("password"));
-				GetSchoolDBBean name = new GetSchoolDBBean();
-				user.setSchool(name.name(rs.getInt("school")));
-				user.setName(rs.getString("name"));
 				GetTypeDBBean type = new GetTypeDBBean();
 				user.setType(type.type(rs.getInt("type")));
-				user.setCheck(rs.getInt("check"));
-				user.setTime(rs.getString("time"));
 			}
 			rs.close();
 			pstmt.close();
