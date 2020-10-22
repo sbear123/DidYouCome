@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.CheckBean;
-import bean.ResultBean;
 
 public class ChStudentDBBean extends CommonDBBean{
 	//Singleton
@@ -18,10 +17,9 @@ public class ChStudentDBBean extends CommonDBBean{
 		return instance;
 	}
 	
-	public ResultBean list(String userid) {
-		ResultBean list = new ResultBean();
+	public List<CheckBean> list(String userid) {
 		CheckBean result = null;
-		List<CheckBean> lists = new ArrayList<>();
+		List<CheckBean> list = new ArrayList<>();
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		System.out.println("conn");
@@ -32,7 +30,6 @@ public class ChStudentDBBean extends CommonDBBean{
 			pstmt.setInt(1, getschool(userid));
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.setResult("ok");
 				result = new CheckBean();
 				result.setCheck(rs.getInt("check"));
 				if (result.getCheck() == 1) {
@@ -42,7 +39,7 @@ public class ChStudentDBBean extends CommonDBBean{
 				}
 				result.setName(rs.getString("name"));
 				result.setTime(rs.getString("time"));
-				lists.add(result);
+				list.add(result);
 			}
 			rs.close();
 			pstmt.close();
@@ -51,7 +48,6 @@ public class ChStudentDBBean extends CommonDBBean{
 		}
 		
 		closeConnection(conn);
-		list.setUser(lists);
 		return list;
 	}
 	

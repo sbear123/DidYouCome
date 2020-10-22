@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.CheckBean;
-import bean.ResultBean;
 
 public class SearchDBBean extends CommonDBBean{
 	//Singleton
@@ -18,22 +17,20 @@ public class SearchDBBean extends CommonDBBean{
 		return instance;
 	}
 	
-	public ResultBean list(String id, String name) {
-		ResultBean list = new ResultBean();
+	public List<CheckBean> list(String id, String name) {
 		CheckBean result = null;
-		List<CheckBean> lists = new ArrayList<>();
+		List<CheckBean> list = new ArrayList<>();
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		System.out.println("conn");
 		
-		String sql = "select * from user where name=? and type=0 and school=?";
+		String sql = "select * from user where name LIKE ? and type=0 and school=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
+			pstmt.setString(1, ("%"+name+"%"));
 			pstmt.setInt(2, getschool(id));
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
-				list.setResult("ok");
 				result = new CheckBean();
 				result.setCheck(rs.getInt("check"));
 				if (result.getCheck() == 1) {
@@ -43,7 +40,7 @@ public class SearchDBBean extends CommonDBBean{
 				}
 				result.setName(rs.getString("name"));
 				result.setTime(rs.getString("time"));
-				lists.add(result);
+				list.add(result);
 			}
 			rs.close();
 			pstmt.close();
@@ -52,7 +49,6 @@ public class SearchDBBean extends CommonDBBean{
 		}
 		
 		closeConnection(conn);
-		list.setUser(lists);
 		return list;
 	}
 	

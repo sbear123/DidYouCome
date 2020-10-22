@@ -5,6 +5,7 @@ public class CheckBean {
 	private int check;
 	private String checkType;
 	private String name;
+	private String school;
 	
 	public String getTime() {
 		return time;
@@ -29,6 +30,12 @@ public class CheckBean {
 	}
 	public void setCheckType(String checkType) {
 		this.checkType = checkType;
+	}
+	public String getSchool() {
+		return school;
+	}
+	public void setSchool(String school) {
+		this.school = school;
 	}
 	
 }
