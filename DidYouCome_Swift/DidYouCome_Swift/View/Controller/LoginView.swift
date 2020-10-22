@@ -19,14 +19,6 @@ class LoginView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if UserDefaults.standard.string(forKey: "id") != nil{
-            if UserDefaults.standard.string(forKey: "type") == "student" {
-                changePage(viewName: "StudentView")
-            } else {
-                changePage(viewName: "TeacherView")
-            }
-        }
-
     }
     
     @IBAction func ShowSignUp(_ sender: Any) {
@@ -38,30 +30,22 @@ class LoginView: UIViewController {
         print(checkNil(text: id))
         if checkNil(text: id) && checkNil(text: password) {
             let result = viewModel.GetUser(id.text!, password: password.text!)
-            if result == "student" {
-                if AutoLogin.isOn{
-                    UserDefaults.standard.set(self.id.text, forKey: "id")
-                    UserDefaults.standard.set(self.password.text, forKey: "pwd")
-                    UserDefaults.standard.set(result, forKey: "type")
-                    
-                    UserDefaults.standard.synchronize()
-                } else {
-                    UserDefaults.standard.set(nil, forKey: "id")
-                    UserDefaults.standard.set(nil, forKey: "pwd")
-                    UserDefaults.standard.set(nil, forKey: "type")
-                    
-                    UserDefaults.standard.synchronize()
-                }
-                let msg = "로그인에 성공하셨습니다."
-                makeAlert(title: "성공", msg: msg, type: "StudentView")
-            }
-            else if result == "teacher"{
-                let msg = "로그인에 성공하셨습니다."
-                makeAlert(title: "성공", msg: msg, type: "TeacherView")
-            }
-            else {
+            if result == "fail"{
                 let msg = "아이디 혹은 비밀번호가 틀렸습니다. 다시 확인해주세요."
                 makeAlert(title: "로그인 실패", msg: msg, type: nil)
+            }
+            if AutoLogin.isOn {
+                UserDefaults.standard.set(id.text, forKey: "userid")
+                UserDefaults.standard.set(password.text, forKey: "pw")
+                UserDefaults.standard.set(result, forKey: "type")
+            }
+            print(result)
+            if result == "student" {
+                let msg = "로그인에 성공하셨습니다."
+                makeAlert(title: "성공", msg: msg, type: "StudentView")
+            } else if result == "teacher"{
+                let msg = "로그인에 성공하셨습니다."
+                makeAlert(title: "성공", msg: msg, type: "TeacherView")
             }
         }
         let msg = "입력이 안된곳이 있습니다. 확인해주세요."
@@ -99,13 +83,9 @@ class LoginView: UIViewController {
     }
     
     func changePage(viewName: String) -> Void {
-        //storyboard를 통해 두번쨰 화면의 storyboard ID를 참조하여 뷰 컨트롤러를 가져옵니다.
-        guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: viewName) else{
-            return
-        }
-        //화면 전환 애니메이션을 설정합니다.
-        uvc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        //인자값으로 다음 뷰 컨트롤러를 넣고 present 메소드를 호출합니다.
-        self.present(uvc, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainTabBarController = storyboard.instantiateViewController(identifier: viewName)
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
+        
     }
 }

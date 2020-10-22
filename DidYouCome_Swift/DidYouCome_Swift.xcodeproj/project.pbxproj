@@ -21,6 +21,7 @@
 		434BD7EE253E687700EC3DD2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD7ED253E687700EC3DD2 /* LoginView.swift */; };
 		434BD7F3253E726100EC3DD2 /* SignUpDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD7F2253E726100EC3DD2 /* SignUpDB.swift */; };
 		434BD7F8253E729500EC3DD2 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434BD7F7253E729500EC3DD2 /* SignUpViewModel.swift */; };
+		436373952541257500F5531B /* SettingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436373942541257500F5531B /* SettingTableView.swift */; };
 		436729F02536B72B00C6A70B /* LoadingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436729EF2536B72B00C6A70B /* LoadingUIView.swift */; };
 		43672A132536BA0E00C6A70B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A122536BA0E00C6A70B /* UIView+Constraints.swift */; };
 		43672A2E2536C38800C6A70B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A2D2536C38800C6A70B /* UserModel.swift */; };
@@ -74,6 +75,7 @@
 		434BD7ED253E687700EC3DD2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		434BD7F2253E726100EC3DD2 /* SignUpDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDB.swift; sourceTree = "<group>"; };
 		434BD7F7253E729500EC3DD2 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		436373942541257500F5531B /* SettingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableView.swift; sourceTree = "<group>"; };
 		436729EF2536B72B00C6A70B /* LoadingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingUIView.swift; sourceTree = "<group>"; };
 		43672A122536BA0E00C6A70B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		43672A2D2536C38800C6A70B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				43EC5F7A2535BA4F009A8C63 /* SignUpView.swift */,
 				436C8B742538440B009B6F10 /* SuserView.swift */,
 				434BD7ED253E687700EC3DD2 /* LoginView.swift */,
+				436373942541257500F5531B /* SettingTableView.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				43148E20253AFF92002348ED /* DB.swift in Sources */,
 				436729F02536B72B00C6A70B /* LoadingUIView.swift in Sources */,
 				43672A2E2536C38800C6A70B /* UserModel.swift in Sources */,
+				436373952541257500F5531B /* SettingTableView.swift in Sources */,
 				43672A332536C57200C6A70B /* LoginViewModel.swift in Sources */,
 				43C815CC253679DE00C4585B /* LoadingView.swift in Sources */,
 				43148E1B253AF194002348ED /* ResultModel.swift in Sources */,
