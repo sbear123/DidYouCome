@@ -29,11 +29,10 @@ public class LoginJsonAction implements Action {
 		System.out.println(str);
 		
 		UserBean user = LoginDBBean.getInstance().login(requestUser.getUserid(), requestUser.getPassword());
+		
 		if(user!=null) {
 			result.result="ok";
-			TypeDBBean type = new TypeDBBean();
-			String types = type.name(user.getTypeId());
-			result.setType(types);
+			result.setType(user.getType());
 		}
 		
 		return gson.toJson(result, ResultBean.class);

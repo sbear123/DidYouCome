@@ -39,7 +39,6 @@ public class LoginDBBean extends CommonDBBean{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		closeConnection(conn);
 		return user;
 	}
