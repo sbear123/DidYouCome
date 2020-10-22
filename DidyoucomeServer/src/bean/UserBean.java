@@ -9,16 +9,16 @@ public class UserBean {
 	private int schoolnum;
 	private int typeid;
 	private String type;
-	private int check;
-	private String checkType;
+	private int checkId;
+	private String check;
 	private String time;
 
 	public int getCheck() {
-		return check;
+		return checkId;
 	}
 
 	public void setCheck(int check) {
-		this.check = check;
+		this.checkId = check;
 	}
 
 	public String getTime() {
@@ -82,11 +82,11 @@ public class UserBean {
 	}
 
 	public String getCheckType() {
-		return checkType;
+		return check;
 	}
 
 	public void setCheckType(String checkType) {
-		this.checkType = checkType;
+		this.check = checkType;
 	}
 
 	public void setType(String type) {

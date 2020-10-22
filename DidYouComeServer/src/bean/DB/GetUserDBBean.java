@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import bean.CheckBean;
+import bean.UserBean;
 
 public class GetUserDBBean extends CommonDBBean{
 	//Singleton
@@ -15,9 +15,9 @@ public class GetUserDBBean extends CommonDBBean{
 		return instance;
 	}
 	
-	public CheckBean getUserData(String userid) {
+	public UserBean getUserData(String userid) {
 		Connection conn = getConnection();
-		CheckBean result = new CheckBean();
+		UserBean result = new UserBean();
 		if(conn==null) return result;
 		System.out.println("conn");
 		
@@ -36,6 +36,11 @@ public class GetUserDBBean extends CommonDBBean{
 				result.setName(rs.getString("name"));
 				GetSchoolDBBean school = new GetSchoolDBBean();
 				result.setSchool(school.name(rs.getInt("school")));
+				result.setPassword(rs.getString("password"));
+				result.setSchoolnum(rs.getInt("school"));
+				result.setTime(rs.getString("time"));
+				result.setUserId(rs.getString("userid"));
+				
 			}
 			rs.close();
 			pstmt.close();

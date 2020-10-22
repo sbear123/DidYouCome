@@ -7,7 +7,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.CheckBean;
 import bean.UserBean;
 import bean.DB.GetUserDBBean;
 import dyc.action.Action;
@@ -18,7 +17,7 @@ public class GetUserJsonAction implements Action {
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		CheckBean json = new CheckBean(); 
+		UserBean json = new UserBean(); 
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
@@ -28,6 +27,6 @@ public class GetUserJsonAction implements Action {
 		
 		json = GetUserDBBean.getInstance().getUserData(requestUser.getUserid());
 		
-		return gson.toJson(json, CheckBean.class);
+		return gson.toJson(json, UserBean.class);
 	}
 }
