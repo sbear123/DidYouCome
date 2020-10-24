@@ -9,6 +9,8 @@ import UIKit
 import RxSwift
 
 class UserView: UIViewController {
+    
+    let userData: UserViewModel = UserViewModel()
 
     @IBOutlet weak var Name: UILabel!
     @IBOutlet weak var Check: UILabel!
@@ -17,11 +19,11 @@ class UserView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        Name.text = UserDefaults.standard.string(forKey: "name")! + "님,"
-        if UserDefaults.standard.string(forKey: "type") == "student"{
-            Check.text = "현재" + UserDefaults.standard.string(forKey: "check")! + "상태"
+        Name.text = userData.GetUser("name") + "님,"
+        if userData.GetUser("type") == "student"{
+            Check.text = "현재" + userData.GetUser("check") + "상태"
         } else {
-            School.text = UserDefaults.standard.string(forKey: "school")
+            School.text = userData.GetUser("school")
         }
     }
 }

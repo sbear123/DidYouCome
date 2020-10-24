@@ -64,7 +64,6 @@ class TableView: UITableViewController {
     func logOut() {
         removeKeys(keyName: "userid")
         removeKeys(keyName: "type")
-        removeKeys(keyName: "pw")
         removeKeys(keyName: "time")
         removeKeys(keyName: "school")
         removeKeys(keyName: "name")
