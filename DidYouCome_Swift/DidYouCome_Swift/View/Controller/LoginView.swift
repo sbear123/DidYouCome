@@ -10,11 +10,12 @@ import RxSwift
 
 class LoginView: UIViewController {
     //login
+    @IBOutlet weak var ShowPw: UIButton!
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var AutoLogin: UISwitch!
     
     let viewModel: LoginViewModel = LoginViewModel()
+    let SetUserData: UserDB = UserDB()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,6 @@ class LoginView: UIViewController {
     }
     
     @IBAction func ShowSignUp(_ sender: Any) {
-        changePage(viewName: "signUp")
         print("Click")
     }
     
@@ -34,19 +34,10 @@ class LoginView: UIViewController {
                 let msg = "아이디 혹은 비밀번호가 틀렸습니다. 다시 확인해주세요."
                 makeAlert(title: "로그인 실패", msg: msg, type: nil)
             }
-            if AutoLogin.isOn {
-                UserDefaults.standard.set(id.text, forKey: "userid")
-                UserDefaults.standard.set(password.text, forKey: "pw")
-                UserDefaults.standard.set(result, forKey: "type")
-            }
+            SetUserData.AutoLogin(userid: id.text!)
             print(result)
-            if result == "student" {
-                let msg = "로그인에 성공하셨습니다."
-                makeAlert(title: "성공", msg: msg, type: "StudentView")
-            } else if result == "teacher"{
-                let msg = "로그인에 성공하셨습니다."
-                makeAlert(title: "성공", msg: msg, type: "TeacherView")
-            }
+            let msg = "로그인에 성공하셨습니다."
+            makeAlert(title: "성공", msg: msg, type: result)
         }
         let msg = "입력이 안된곳이 있습니다. 확인해주세요."
         makeAlert(title: "실패", msg: msg, type: nil)
@@ -76,8 +67,10 @@ class LoginView: UIViewController {
     
     @IBAction func ShowPw(_ sender: Any) {
         if(password.isSecureTextEntry == true){
+            ShowPw.setImage(UIImage(systemName: "eye"), for: .normal)
             password.isSecureTextEntry = false
         } else {
+            ShowPw.setImage(UIImage(systemName: "eye.slash"), for: .normal)
             password.isSecureTextEntry = true
         }
     }
