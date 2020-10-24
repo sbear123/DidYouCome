@@ -7,20 +7,10 @@ public class UserBean {
 	private String name;
 	private String school;
 	private int schoolnum;
-	private int typeid;
 	private String type;
-	private int checkId;
 	private String check;
 	private String time;
-
-	public int getCheck() {
-		return checkId;
-	}
-
-	public void setCheck(int check) {
-		this.checkId = check;
-	}
-
+	
 	public String getTime() {
 		return time;
 	}
@@ -71,14 +61,6 @@ public class UserBean {
 
 	public void setSchoolnum(int shoolnum) {
 		this.schoolnum = shoolnum;
-	}
-
-	public int getTypeId() {
-		return typeid;
-	}
-
-	public void setTypeId(int typeid) {
-		this.typeid = typeid;
 	}
 
 	public String getCheckType() {

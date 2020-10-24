@@ -27,8 +27,7 @@ public class GetUserDBBean extends CommonDBBean{
 			pstmt.setString(1, userid);
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				result.setCheck(rs.getInt("check"));
-				if (result.getCheck() == 1) {
+				if (rs.getInt("check") == 1) {
 					result.setCheckType("입실");
 				}else {
 					result.setCheckType("퇴실");
@@ -37,7 +36,6 @@ public class GetUserDBBean extends CommonDBBean{
 				GetSchoolDBBean school = new GetSchoolDBBean();
 				result.setSchool(school.name(rs.getInt("school")));
 				result.setPassword(rs.getString("password"));
-				result.setSchoolnum(rs.getInt("school"));
 				result.setTime(rs.getString("time"));
 				result.setUserId(rs.getString("userid"));
 				

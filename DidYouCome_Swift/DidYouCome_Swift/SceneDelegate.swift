@@ -26,10 +26,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // instantiate the main tab bar controller and set it as root view controller
             // using the storyboard identifier we set earlier
             if UserDefaults.standard.string(forKey: "type") == "student" {
-                let mainTabBarController = storyboard.instantiateViewController(identifier: "StudentView")
+                let mainTabBarController = storyboard.instantiateViewController(identifier: "student")
                 window?.rootViewController = mainTabBarController
             } else {
-                let mainTabBarController = storyboard.instantiateViewController(identifier: "TeacherView")
+                let mainTabBarController = storyboard.instantiateViewController(identifier: "teacher")
                 window?.rootViewController = mainTabBarController
             }
         } else {

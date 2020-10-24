@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import bean.ResultBean;
 import bean.UserBean;
 import bean.DB.LoginDBBean;
-import bean.DB.TypeDBBean;
 import dyc.action.Action;
 
 public class LoginJsonAction implements Action {
