@@ -15,7 +15,6 @@ class LoginView: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     let viewModel: LoginViewModel = LoginViewModel()
-    let SetUserData: UserDB = UserDB()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +33,7 @@ class LoginView: UIViewController {
                 let msg = "아이디 혹은 비밀번호가 틀렸습니다. 다시 확인해주세요."
                 makeAlert(title: "로그인 실패", msg: msg, type: nil)
             }
-            SetUserData.AutoLogin(userid: id.text!)
+            viewModel.AutoLogin(userid: id.text!)
             print(result)
             let msg = "로그인에 성공하셨습니다."
             makeAlert(title: "성공", msg: msg, type: result)

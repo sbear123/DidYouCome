@@ -1,5 +1,5 @@
 //
-//  DB.swift
+//  SetServer.swift
 //  DidYouCome_Swift
 //
 //  Created by 박지현 on 2020/10/17.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DB {
+class SetServer {
     let sUrl = "http://localhost:8081/DidYouComeServer/"
     
     func POST(api: String, param: Dictionary<String, String>) -> URLRequest {

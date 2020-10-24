@@ -10,6 +10,8 @@ import RxSwift
 
 class SignUpView: UIViewController {
     
+    @IBOutlet weak var ShowPw: UIButton!
+    @IBOutlet weak var ShowPwCheck: UIButton!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -47,7 +49,7 @@ class SignUpView: UIViewController {
         var okAction: UIAlertAction
         if title == "성공" {
             okAction = UIAlertAction(title: "OK", style: .default,handler:  { (action) in
-                self.presentingViewController?.dismiss(animated: true)
+                self.navigationController?.popViewController(animated: true)
             })
         } else {
             okAction = UIAlertAction(title: "OK", style: .default, handler : nil)
@@ -66,21 +68,25 @@ class SignUpView: UIViewController {
     
     @IBAction func ShowPw(_ sender: Any) {
         if(password.isSecureTextEntry == true){
+            ShowPw.setImage(UIImage(systemName: "eye"), for: .normal)
             password.isSecureTextEntry = false
         } else {
+            ShowPw.setImage(UIImage(systemName: "eye.slash"), for: .normal)
             password.isSecureTextEntry = true
         }
     }
     
     @IBAction func ShowPwCheck(_ sender: Any) {
         if(pwCheck.isSecureTextEntry == true){
+            ShowPwCheck.setImage(UIImage(systemName: "eye"), for: .normal)
             pwCheck.isSecureTextEntry = false
         } else {
+            ShowPwCheck.setImage(UIImage(systemName: "eye.slash"), for: .normal)
             pwCheck.isSecureTextEntry = true
         }
     }
     
     @IBAction func ShowLogin(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
 }
