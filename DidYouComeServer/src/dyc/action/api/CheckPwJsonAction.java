@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 
 import bean.ResultBean;
 import bean.UserBean;
-import bean.DB.RegisterDBBean;
+import bean.DB.CheckPwDBBean;
 import dyc.action.Action;
 
 public class CheckPwJsonAction implements Action {
@@ -24,9 +24,7 @@ public class CheckPwJsonAction implements Action {
 		String str = IOUtils.toString(request.getReader());
 		UserBean requestUser = gson.fromJson(str, UserBean.class); 
 		
-		int count = RegisterDBBean.getInstance().register(requestUser);
-		if(count==1)
-			result.result="ok";
+		result = CheckPwDBBean.getInstance().check(requestUser.getUserid(), requestUser.getPassword());
 		
 		return gson.toJson(result, ResultBean.class);
 	}
