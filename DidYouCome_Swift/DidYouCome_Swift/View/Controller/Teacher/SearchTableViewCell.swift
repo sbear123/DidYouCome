@@ -8,6 +8,10 @@
 import UIKit
 
 class SearchTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var check: UILabel!
+    @IBOutlet weak var time: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

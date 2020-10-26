@@ -12,5 +12,9 @@ class UserViewModel{
     func GetUser(_ keyName: String) -> String {
         return UserDefaults.standard.string(forKey: keyName)!
     }
+    
+    func SetUser(key:String, keyName: String) {
+        UserDefaults.standard.set(key, forKey: keyName)
+    }
 }
 

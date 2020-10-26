@@ -13,12 +13,15 @@ class LoginView: UIViewController {
     @IBOutlet weak var ShowPw: UIButton!
     @IBOutlet weak var id: UITextField!
     @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var Loading: UIView!
     
     let viewModel: LoginViewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.Loading.isHidden = true
+        setLoadView(name: "LoadingView", width: 414, height: 896)
     }
     
     @IBAction func ShowSignUp(_ sender: Any) {
@@ -34,9 +37,11 @@ class LoginView: UIViewController {
                 makeAlert(title: "로그인 실패", msg: msg, type: nil)
             }
             viewModel.AutoLogin(userid: id.text!)
+            UserDefaults.standard.set(result, forKey: "type")
             print(result)
             let msg = "로그인에 성공하셨습니다."
             makeAlert(title: "성공", msg: msg, type: result)
+            self.Loading.isHidden = false
         }
         let msg = "입력이 안된곳이 있습니다. 확인해주세요."
         makeAlert(title: "실패", msg: msg, type: nil)
@@ -78,6 +83,17 @@ class LoginView: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainTabBarController = storyboard.instantiateViewController(identifier: viewName)
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
-        
+    }
+    
+    func setLoadView(name: String, width:Int, height: Int) -> Void {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller: UIViewController = storyboard.instantiateViewController(withIdentifier: name) as UIViewController
+        addChild(controller)
+        Loading.addSubview(controller.view)
+        controller.view.frame = view.bounds
+        controller.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        // tell the childviewcontroller it's contained in it's parent
+        controller.didMove(toParent: self)
+        controller.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
     }
 }

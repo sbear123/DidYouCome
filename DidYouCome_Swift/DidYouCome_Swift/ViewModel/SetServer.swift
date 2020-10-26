@@ -2,7 +2,7 @@
 //  SetServer.swift
 //  DidYouCome_Swift
 //
-//  Created by 박지현 on 2020/10/17.
+//  Created by 박지현 on 2020/10/24.
 //
 
 import Foundation

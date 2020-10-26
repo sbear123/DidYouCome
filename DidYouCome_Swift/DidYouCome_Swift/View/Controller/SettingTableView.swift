@@ -8,6 +8,10 @@
 import UIKit
 
 class TableView: UITableViewController {
+    
+    let viewModel: SettingViewModel = SettingViewModel()
+    let user: UserViewModel = UserViewModel()
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if UserDefaults.standard.string(forKey: "type") == "teacher"{
@@ -37,14 +41,83 @@ class TableView: UITableViewController {
     
     func changeName() {
         //이름바꾸기
+        let profileAlert = UIAlertController(title: "이름 변경", message: nil, preferredStyle: .alert)
+        
+        profileAlert.addTextField() { (tf) in
+            tf.placeholder = "New Name"
+        }
+        
+        profileAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        profileAlert.addAction(UIAlertAction(title: "완료", style: .destructive) { (_) in
+            let name = profileAlert.textFields?[0].text ?? ""
+            
+            if self.viewModel.ChangeName(name) {
+                let alert = UIAlertController(title: "성공", message: "이름 변경에 성공하셨습니다.", preferredStyle: .alert)
+                var okAction : UIAlertAction
+                okAction = UIAlertAction(title: "OK", style: .default){ (action) in
+                    self.user.SetUser(key: name, keyName: "name")
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: false, completion: nil)
+            } else {
+                self.makeAlert(title: "실패", msg: "이름 변경에 실패하셨습니다.")
+            }
+        })
+        self.present(profileAlert, animated: true)
     }
     
     func changePw() {
         //비밀번호바꾸기
+        let profileAlert = UIAlertController(title: "비밀번호 수정", message: nil, preferredStyle: .alert)
+        
+        profileAlert.addTextField() { (tf) in
+            tf.placeholder = "Old Password"
+        }
+        profileAlert.addTextField() { (tf) in
+            tf.placeholder = "New Password"
+        }
+        
+        profileAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        profileAlert.addAction(UIAlertAction(title: "완료", style: .destructive) { (_) in
+            let oldPw = profileAlert.textFields?[0].text ?? ""
+            let newPw = profileAlert.textFields?[1].text ?? ""
+            
+            if self.viewModel.CheckPw(Pw: oldPw) {
+                if self.viewModel.ChangePw(newPw){
+                    self.makeAlert(title: "성공", msg: "비밀번호 변경에 성공하셨습니다.")
+                }
+            } else {
+                self.makeAlert(title: "실패", msg: "비밀번호가 틀리셨습니다. 다시 시도해주십시오.")
+            }
+        })
+        self.present(profileAlert, animated: true)
     }
     
     func changeSchool() {
         //학교바꾸기
+        let profileAlert = UIAlertController(title: "학교 변경", message: nil, preferredStyle: .alert)
+        
+        profileAlert.addTextField() { (tf) in
+            tf.placeholder = "New School"
+        }
+        
+        profileAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        profileAlert.addAction(UIAlertAction(title: "완료", style: .destructive) { (_) in
+            let School = profileAlert.textFields?[0].text ?? ""
+            
+            if self.viewModel.ChangeSchool(School) {
+                let alert = UIAlertController(title: "성공", message: "학교 변경에 성공하셨습니다.", preferredStyle: .alert)
+                var okAction : UIAlertAction
+                okAction = UIAlertAction(title: "OK", style: .default){ (action) in
+                    self.user.SetUser(key: School, keyName: "school")
+                }
+                alert.addAction(okAction)
+                self.present(alert, animated: false, completion: nil)
+            } else {
+                self.makeAlert(title: "실패", msg: "학교 변경에 실패하셨습니다.")
+            }
+        })
+        self.present(profileAlert, animated: true)
     }
     
     func checkLogOut() {
@@ -58,6 +131,14 @@ class TableView: UITableViewController {
         cancel = UIAlertAction(title: "아니요", style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancel)
+        present(alert, animated: false, completion: nil)
+    }
+    
+    func makeAlert(title: String, msg: String) -> Void {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        var okAction : UIAlertAction
+        okAction = UIAlertAction(title: "OK", style: .default, handler : nil)
+        alert.addAction(okAction)
         present(alert, animated: false, completion: nil)
     }
     

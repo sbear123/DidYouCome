@@ -1,5 +1,5 @@
 //
-//  TeacherHomeView.swift
+//  SearchView.swift
 //  DidYouCome_Swift
 //
 //  Created by 박지현 on 2020/10/22.
@@ -8,51 +8,53 @@
 import UIKit
 import RxSwift
 
-class TeacherHomeView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchView: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
-    let userData: UserViewModel = UserViewModel()
-    let viewModel: StudentTableViewModel = StudentTableViewModel()
-    var StudentData = [[String:Any]]()
-    var studentName = [String]()
-    var studentCheck = [String]()
-    var studentTime = [String]()
     
-    @IBOutlet weak var LoadingView: UIView!
     @IBOutlet weak var TableView: UITableView!
-    @IBOutlet weak var Check: UILabel!
+    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var LoadingView: UIView!
+    
+    let viewModel: SearchViewModel = SearchViewModel()
+    var StudentData = [[String:Any]]()
+    var student: UserModel!
+    var studentList = [UserModel]()
+    var filteredArray = [UserModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        Check.text = userData.GetUser("check") + "확인"
         setView(name: "LoadingView", width: 414, height: 896)
         StudentData = viewModel.GetStudents()
-        print(StudentData)
         
-        for student in StudentData{
-            self.studentName.append(student["name"] as! String)
-            self.studentCheck.append(student["checkType"] as! String)
-            self.studentTime.append(student["time"] as! String)
+        for data in StudentData{
+            student = UserModel()
+            self.student._name = data["name"] as! String
+            self.student._check = data["checkType"] as! String
+            self.student._time = data["time"] as! String
+            self.studentList.append(student)
         }
-        print(studentName)
+        filteredArray = studentList
         
-        self.TableView.delegate = self
-        self.TableView.dataSource = self
+        TableView.delegate = self
+        TableView.dataSource = self
+        searchBar.delegate = self
         
         LoadingView.removeFromSuperview()
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return studentName.count
+        return studentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentTableViewCell
-        print(indexPath.row)
-        print(studentName[indexPath.row])
-        cell.name.text = studentName[indexPath.row]
-        cell.check.text = studentCheck[indexPath.row]
-        cell.time.text = studentTime[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchTableViewCell
+        let students = studentList[indexPath.row]
+        
+        cell.name.text = students._name
+        cell.check.text = students._check
+        cell.time.text = students._time
         
         return cell
     }
@@ -69,5 +71,3 @@ class TeacherHomeView: UIViewController, UITableViewDelegate, UITableViewDataSou
         controller.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
     }
 }
-
-

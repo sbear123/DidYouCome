@@ -24,11 +24,17 @@ class StudentHomeView: UIViewController {
         // Do any additional setup after loading the view.
         Time.text = userData.GetUser("time")
         let check = userData.GetUser("check")
-        CheckTime.text = check
-        CheckMain.text = check
-        CheckAsk.text = check
-        Check.setTitle(check, for: .normal)
-        Name.text = userData.GetUser("name")
+        if check == "퇴실" {
+            CheckMain.text = "입실확인"
+            CheckAsk.text = "입실하시나요?"
+            Check.setTitle("입실", for: .normal)
+        } else {
+            CheckMain.text = "퇴실확인"
+            CheckAsk.text = "퇴실하시나요?"
+            Check.setTitle("퇴실", for: .normal)
+        }
+        CheckTime.text = check + "시간"
+        Name.text = userData.GetUser("name") + "님,"
     }
     
     

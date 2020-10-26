@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import DidYouCome_Swift
+//@testable import DidYouCome_Swift
 
 class DidYouCome_SwiftTests: XCTestCase {
 

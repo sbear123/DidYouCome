@@ -34,7 +34,7 @@ class LoginViewModel{
         let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
             
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
-                print("error=\(error)")
+                print("error=\(String(describing: error))")
                 return
             }
             
@@ -94,9 +94,6 @@ class LoginViewModel{
                     }
                     if let time = dJsonDic["time"]{
                         UserDefaults.standard.set(time, forKey: "time")
-                    }
-                    if let type = dJsonDic["type"]{
-                        UserDefaults.standard.set(type, forKey: "type")
                     }
                     print(dJsonDic)
                     sem.signal()
