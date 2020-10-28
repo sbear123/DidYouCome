@@ -80,4 +80,10 @@ struct UserModel {
         }
     }
     
+    enum Element: String {
+            case 입실
+            case 퇴실
+            case All
+        }
+    
 }
