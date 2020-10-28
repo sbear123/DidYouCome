@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import bean.TimeBean;
+import bean.UserBean;
 
 
 public class CheckInDBBean extends CommonDBBean{
@@ -15,10 +16,9 @@ public class CheckInDBBean extends CommonDBBean{
 		return instance;
 	}
 	
-	public int checkIn(String userid) {
-		int result = 0;
+	public UserBean checkIn(String userid) {
 		Connection conn = getConnection();
-		if(conn==null) return 0;
+		if(conn==null) return null;
 		System.out.println("conn");
 		TimeBean time = new TimeBean();
 		
@@ -29,13 +29,17 @@ public class CheckInDBBean extends CommonDBBean{
 			pstmt.setString(2, time.getTime());
 			pstmt.setString(3, userid);
 			
-			result = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 			if(pstmt!=null) pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		UserBean user = new UserBean();
+		user.setCheckType("입실");
+		user.setTime(time.getTime());
+		
 		closeConnection(conn);
-		return result;
+		return user;
 	}
 }

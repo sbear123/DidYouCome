@@ -7,7 +7,6 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.gson.Gson;
 
-import bean.ResultBean;
 import bean.UserBean;
 import bean.DB.CheckInDBBean;
 import dyc.action.Action;
@@ -18,16 +17,13 @@ public class CheckInJsonAction implements Action {
 	public String requestProcess(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		request.setCharacterEncoding("UTF-8");
 		Gson gson = new Gson();
-		ResultBean result = new ResultBean();
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
 		UserBean requestUser = gson.fromJson(str, UserBean.class); 
 		
-		int count = CheckInDBBean.getInstance().checkIn(requestUser.getUserid());
-		if(count==1)
-			result.result="ok";
+		UserBean user = CheckInDBBean.getInstance().checkIn(requestUser.getUserid());
 		
-		return gson.toJson(result, ResultBean.class);
+		return gson.toJson(user, UserBean.class);
 	}
 }

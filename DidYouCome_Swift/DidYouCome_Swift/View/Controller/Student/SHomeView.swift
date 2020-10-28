@@ -11,6 +11,7 @@ import RxSwift
 class StudentHomeView: UIViewController {
     
     let userData: UserViewModel = UserViewModel()
+    let viewModel: SHomeViewModel = SHomeViewModel()
     
     @IBOutlet weak var Time: UILabel!
     @IBOutlet weak var CheckTime: UILabel!
@@ -19,11 +20,26 @@ class StudentHomeView: UIViewController {
     @IBOutlet weak var Name: UILabel!
     @IBOutlet weak var Check: UIButton!
     
+    var check: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        changeText()
+    }
+    
+    @IBAction func CheckInCheckOut(_ sender: Any) {
+        if check == "퇴실" {
+            viewModel.CheckIn()
+        } else {
+            viewModel.CheckOut()
+        }
+        changeText()
+    }
+    
+    func changeText() {
         Time.text = userData.GetUser("time")
-        let check = userData.GetUser("check")
+        check = userData.GetUser("check")
         if check == "퇴실" {
             CheckMain.text = "입실확인"
             CheckAsk.text = "입실하시나요?"

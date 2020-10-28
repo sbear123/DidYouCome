@@ -73,7 +73,7 @@ class SearchView: UIViewController, UITableViewDataSource, UISearchResultsUpdati
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchController.isActive && searchController.searchBar.text != "" ? filteredData.count : studentList.count
+        return searchController.isActive && searchController.searchBar.text != ""  ? filteredData.count : studentList.count
     }
     
     func updateSearchResults(for searchController: UISearchController) {
