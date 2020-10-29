@@ -15,6 +15,7 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let changeTitle = ["이름변경", "비밀번호변경", "학교변경"]
     let sections: [String] = ["변경", "로그아웃"]
     let viewModel: SettingViewModel = SettingViewModel()
+    var userType: String = "student"
     
     @IBOutlet var UIView: UIView!
     @IBOutlet public var Name: UILabel!
@@ -26,25 +27,26 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         Name.text = userData.GetUser("name") + "님,"
-        if userData.GetUser("type") == "student"{
+        userType = userData.GetUser("type")
+        if userType == "student"{
             Check.text = "현재 " + userData.GetUser("check") + "상태"
-            self.tableview.delegate = self
-            self.tableview.dataSource = self
         } else {
             School.text = userData.GetUser("school")
         }
+        self.tableview.delegate = self
+        self.tableview.dataSource = self
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return userType == "student" ? sections.count : 1
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return userType == "student" ? "로그아웃" : sections[section]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == 0 && userType == "student"{
             return changeImage.count
         }
         return 1
@@ -53,7 +55,7 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingCell", for: indexPath) as! SetTableViewCell
         
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && userType == "student" {
             cell.title.text = changeTitle[indexPath.row]
             cell.icon.image = UIImage(systemName: changeImage[indexPath.row])
             cell.nextIcon.image = UIImage(systemName: "chevron.right")
@@ -67,7 +69,7 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if UserDefaults.standard.string(forKey: "type") == "teacher"{
+        if userType == "teacher"{
             if indexPath.row == 0 {
                 checkLogOut()
             }
