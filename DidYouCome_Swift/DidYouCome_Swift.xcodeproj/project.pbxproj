@@ -21,7 +21,6 @@
 		4363493425416D0A0025E478 /* THomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4363493325416D0A0025E478 /* THomeView.swift */; };
 		4363493925416D390025E478 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4363493825416D390025E478 /* SearchView.swift */; };
 		4363494425416D660025E478 /* SHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4363494325416D660025E478 /* SHomeView.swift */; };
-		436373952541257500F5531B /* SettingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436373942541257500F5531B /* SettingTableView.swift */; };
 		4365A6B025498CEC009482D3 /* SHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4365A6AF25498CEC009482D3 /* SHomeViewModel.swift */; };
 		436729F02536B72B00C6A70B /* LoadingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436729EF2536B72B00C6A70B /* LoadingUIView.swift */; };
 		43672A132536BA0E00C6A70B /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A122536BA0E00C6A70B /* UIView+Constraints.swift */; };
@@ -39,6 +38,7 @@
 		43C815C4253678E700C4585B /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 43C815C3253678E700C4585B /* loading.gif */; };
 		43C815CC253679DE00C4585B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C815CB253679DE00C4585B /* LoadingView.swift */; };
 		43EC5F7B2535BA4F009A8C63 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EC5F7A2535BA4F009A8C63 /* SignUpView.swift */; };
+		43F1F29D254A4B61009785D4 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F1F29C254A4B61009785D4 /* SetTableViewCell.swift */; };
 		49303AEB5356F22B26AFA2D0 /* Pods_DidYouCome_Swift_DidYouCome_SwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B1CDCD492155CB30699225 /* Pods_DidYouCome_Swift_DidYouCome_SwiftUITests.framework */; };
 		FCCDFF31595CF8B5688BC3D1 /* Pods_DidYouCome_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B47150BB98E085B50D6171 /* Pods_DidYouCome_Swift.framework */; };
 /* End PBXBuildFile section */
@@ -82,7 +82,6 @@
 		4363493325416D0A0025E478 /* THomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = THomeView.swift; sourceTree = "<group>"; };
 		4363493825416D390025E478 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4363494325416D660025E478 /* SHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHomeView.swift; sourceTree = "<group>"; };
-		436373942541257500F5531B /* SettingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableView.swift; sourceTree = "<group>"; };
 		4365A6AF25498CEC009482D3 /* SHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHomeViewModel.swift; sourceTree = "<group>"; };
 		436729EF2536B72B00C6A70B /* LoadingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingUIView.swift; sourceTree = "<group>"; };
 		43672A122536BA0E00C6A70B /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
@@ -100,6 +99,7 @@
 		43C815C3253678E700C4585B /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		43C815CB253679DE00C4585B /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		43EC5F7A2535BA4F009A8C63 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		43F1F29C254A4B61009785D4 /* SetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
 		A9E5BEEEB0152A941AC50B6C /* Pods-DidYouCome_Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DidYouCome_Swift.release.xcconfig"; path = "Target Support Files/Pods-DidYouCome_Swift/Pods-DidYouCome_Swift.release.xcconfig"; sourceTree = "<group>"; };
 		B056E17094ED8F1139F7DE9A /* Pods-DidYouCome_SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DidYouCome_SwiftTests.debug.xcconfig"; path = "Target Support Files/Pods-DidYouCome_SwiftTests/Pods-DidYouCome_SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0B1CDCD492155CB30699225 /* Pods_DidYouCome_Swift_DidYouCome_SwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DidYouCome_Swift_DidYouCome_SwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -294,7 +294,7 @@
 				43EC5F7A2535BA4F009A8C63 /* SignUpView.swift */,
 				436C8B742538440B009B6F10 /* UserView.swift */,
 				434BD7ED253E687700EC3DD2 /* LoginView.swift */,
-				436373942541257500F5531B /* SettingTableView.swift */,
+				43F1F29C254A4B61009785D4 /* SetTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -580,10 +580,10 @@
 				4363493925416D390025E478 /* SearchView.swift in Sources */,
 				43672A132536BA0E00C6A70B /* UIView+Constraints.swift in Sources */,
 				43C40A66254449DC0090F9ED /* StudentTableViewModel.swift in Sources */,
+				43F1F29D254A4B61009785D4 /* SetTableViewCell.swift in Sources */,
 				436729F02536B72B00C6A70B /* LoadingUIView.swift in Sources */,
 				43672A2E2536C38800C6A70B /* UserModel.swift in Sources */,
 				4363494425416D660025E478 /* SHomeView.swift in Sources */,
-				436373952541257500F5531B /* SettingTableView.swift in Sources */,
 				4397D34A2546A51C007AE05B /* SearchViewModel.swift in Sources */,
 				43672A332536C57200C6A70B /* LoginViewModel.swift in Sources */,
 				43C40A8A2544F19B0090F9ED /* SettingViewModel.swift in Sources */,

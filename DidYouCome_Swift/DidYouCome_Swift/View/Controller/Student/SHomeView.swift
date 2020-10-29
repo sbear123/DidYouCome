@@ -41,11 +41,11 @@ class StudentHomeView: UIViewController {
         Time.text = userData.GetUser("time")
         check = userData.GetUser("check")
         if check == "퇴실" {
-            CheckMain.text = "입실확인"
+            CheckMain.text = "퇴실 상태"
             CheckAsk.text = "입실하시나요?"
             Check.setTitle("입실", for: .normal)
         } else {
-            CheckMain.text = "퇴실확인"
+            CheckMain.text = "입실 상태"
             CheckAsk.text = "퇴실하시나요?"
             Check.setTitle("퇴실", for: .normal)
         }
