@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class SignUpView: UIViewController {
+class SignUpView: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var ShowPw: UIButton!
     @IBOutlet weak var ShowPwCheck: UIButton!
@@ -18,17 +18,36 @@ class SignUpView: UIViewController {
     @IBOutlet weak var pwCheck: UITextField!
     @IBOutlet weak var school: UITextField!
     
+    var height = 0 //키보드 높이
+    //비밀번호 정규식
+    
     let viewModel: SignUpViewModel = SignUpViewModel()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.id.delegate = self
+        self.name.delegate = self
+        self.password.delegate = self
+        self.pwCheck.delegate = self
+        self.school.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification , object: nil)
     }
     
     @IBAction func SignUp(_ sender: Any) {
         if checkNil(text: name) && checkNil(text: id) && checkNil(text: password) && checkNil(text: pwCheck) && checkNil(text: school) {
             if password.text != pwCheck.text {
                 let msg = "비밀번호와 비밀번호확인이 다릅니다. 다시 입력해주세요."
+                makeAlert(title: "", msg: msg)
+            }
+            else if !validatePassword() {
+                let msg = "비밀번호가 너무 약합니다. 다시 입력해주세요."
+                makeAlert(title: "", msg: msg)
+            }
+            else if viewModel.CheckSchool(school: school.text!) {
+                let msg = "존재하지 않는 학교 입니다. 다시 입력해주세요."
                 makeAlert(title: "", msg: msg)
             }
             else if viewModel.MakeUser(id.text!, password: password.text!, school: school.text!, name: name.text!) {
@@ -89,4 +108,49 @@ class SignUpView: UIViewController {
     @IBAction func ShowLogin(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    override func touchesBegan (_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+        self.view.frame.origin.y += CGFloat(self.height)
+        self.height = 0
+    }
+    
+    private func switchBasedNextTextField(_ textField: UITextField) {
+        switch textField {
+        case self.id:
+            self.name.becomeFirstResponder()
+        case self.name:
+            self.password.becomeFirstResponder()
+        case self.password:
+            self.pwCheck.becomeFirstResponder()
+        case self.pwCheck:
+            self.school.becomeFirstResponder()
+        default:
+            self.school.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.switchBasedNextTextField(textField)
+        return true
+    }
+    
+    @objc func keyboardWillAppear(_ sender: NotificationCenter){
+        if (height != 200){
+            self.view.frame.origin.y -= 200
+            self.height += 200
+        }
+    }
+    
+    @objc func keyboardWillDisappear(_ sender: NotificationCenter){
+        self.view.frame.origin.y += CGFloat(self.height)
+        self.height = 0
+    }
+    
+    func validatePassword() -> Bool {
+        let pwRegEx = "(?=.*[A-Za-z])(?=.*[0-9]).{6,20}"
+        let predicate = NSPredicate(format:"SELF MATCHES %@", pwRegEx)
+        return predicate.evaluate(with: self.password.text)
+    }
+    
 }
