@@ -4,27 +4,27 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import bean.ResultBean;
 
-public class CheckPwDBBean extends CommonDBBean{
+public class CheckSchoolDBBean  extends CommonDBBean{
 	//Singleton
-	private static CheckPwDBBean instance = new CheckPwDBBean();
-	private CheckPwDBBean() {}
-	public static CheckPwDBBean getInstance() {
+	private static CheckSchoolDBBean instance = new CheckSchoolDBBean();
+	private CheckSchoolDBBean() {}
+	public static CheckSchoolDBBean getInstance() {
 		return instance;
 	}
 	
-	public ResultBean check(String userid, String password) {
+	public ResultBean check(String school) {
 		ResultBean result = new ResultBean();
 		Connection conn = getConnection();
 		if(conn==null) return null;
 		System.out.println("conn");
 		
-		String sql = "select * from user where userid=? and password=?";
+		String sql = "select * from school where name=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userid);
-			pstmt.setString(2, password);
+			pstmt.setString(1, school);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
