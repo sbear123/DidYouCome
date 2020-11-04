@@ -21,21 +21,22 @@ class TeacherHomeView: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var TableView: UITableView!
     @IBOutlet weak var Check: UILabel!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+                                    #selector(handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         Check.text = userData.GetUser("check") + "확인"
         setView(name: "LoadingView", width: 414, height: 896)
-        StudentData = viewModel.GetStudents()
-        
-        for student in StudentData{
-            self.studentName.append(student["name"] as! String)
-            self.studentCheck.append(student["checkType"] as! String)
-            self.studentTime.append(student["time"] as! String)
-        }
-        
-        self.TableView.delegate = self
-        self.TableView.dataSource = self
+        setTable()
+        TableView.addSubview(self.refreshControl)
         
         LoadingView.removeFromSuperview()
     }
@@ -64,6 +65,24 @@ class TeacherHomeView: UIViewController, UITableViewDelegate, UITableViewDataSou
         // tell the childviewcontroller it's contained in it's parent
         controller.didMove(toParent: self)
         controller.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    }
+    
+    func setTable() {
+        StudentData = viewModel.GetStudents()
+        
+        for student in StudentData{
+            self.studentName.append(student["name"] as! String)
+            self.studentCheck.append(student["checkType"] as! String)
+            self.studentTime.append(student["time"] as! String)
+        }
+        
+        self.TableView.delegate = self
+        self.TableView.dataSource = self
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        setTable()
+        refreshControl.endRefreshing()
     }
 }
 
