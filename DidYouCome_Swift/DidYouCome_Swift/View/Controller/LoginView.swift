@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class LoginView: UIViewController {
+class LoginView: UIViewController, UITextFieldDelegate {
     //login
     @IBOutlet weak var ShowPw: UIButton!
     @IBOutlet weak var id: UITextField!
@@ -22,6 +22,8 @@ class LoginView: UIViewController {
         // Do any additional setup after loading the view.
         self.Loading.isHidden = true
         setLoadView(name: "LoadingView", width: 414, height: 896)
+        self.id.delegate = self
+        self.password.delegate = self
     }
     
     @IBAction func ShowSignUp(_ sender: Any) {
@@ -95,5 +97,23 @@ class LoginView: UIViewController {
         // tell the childviewcontroller it's contained in it's parent
         controller.didMove(toParent: self)
         controller.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    }
+    
+    private func switchBasedNextTextField(_ textField: UITextField) {
+        switch textField {
+        case self.id:
+            self.password.becomeFirstResponder()
+        default:
+            self.password.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.switchBasedNextTextField(textField)
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
 }
