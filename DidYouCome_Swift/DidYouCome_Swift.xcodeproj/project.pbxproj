@@ -27,6 +27,7 @@
 		43672A2E2536C38800C6A70B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A2D2536C38800C6A70B /* UserModel.swift */; };
 		43672A332536C57200C6A70B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A322536C57200C6A70B /* LoginViewModel.swift */; };
 		43672A382536C76C00C6A70B /* UserInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43672A372536C76C00C6A70B /* UserInfoManager.swift */; };
+		43675AC2255278C800A8465A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43675AC1255278C800A8465A /* TabBarViewController.swift */; };
 		436C8B752538440B009B6F10 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436C8B742538440B009B6F10 /* UserView.swift */; };
 		438D0D3F254A63BB000EA11C /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438D0D3E254A63BB000EA11C /* TableView.swift */; };
 		4397D34A2546A51C007AE05B /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397D3492546A51C007AE05B /* SearchViewModel.swift */; };
@@ -89,6 +90,7 @@
 		43672A2D2536C38800C6A70B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		43672A322536C57200C6A70B /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		43672A372536C76C00C6A70B /* UserInfoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoManager.swift; sourceTree = "<group>"; };
+		43675AC1255278C800A8465A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		436C8B742538440B009B6F10 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		438D0D3E254A63BB000EA11C /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		4397D3492546A51C007AE05B /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				434BD7ED253E687700EC3DD2 /* LoginView.swift */,
 				43F1F29C254A4B61009785D4 /* SetTableViewCell.swift */,
 				438D0D3E254A63BB000EA11C /* TableView.swift */,
+				43675AC1255278C800A8465A /* TabBarViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				43C40A44254434F80090F9ED /* UserViewModel.swift in Sources */,
 				434BD7F8253E729500EC3DD2 /* SignUpViewModel.swift in Sources */,
 				4363493425416D0A0025E478 /* THomeView.swift in Sources */,
+				43675AC2255278C800A8465A /* TabBarViewController.swift in Sources */,
 				43EC5F7B2535BA4F009A8C63 /* SignUpView.swift in Sources */,
 				434BD7EE253E687700EC3DD2 /* LoginView.swift in Sources */,
 				434135552531F33700FF567F /* AppDelegate.swift in Sources */,

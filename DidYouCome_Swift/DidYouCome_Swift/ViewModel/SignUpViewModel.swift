@@ -59,5 +59,40 @@ class SignUpViewModel{
 
         return result
     }
+    
+    func CheckSchool(school: String) -> Bool {
+        var check = false
+        let param: Dictionary = ["school": school] // JSON 객체로 변환할 딕셔너리 준비
+        let request = server.POST(api: "checkSchool.api", param: param)
+        let sem = DispatchSemaphore.init(value: 0)
+        
+        let task = URLSession.shared.dataTask(with: request) {(data, response, error) in
+            
+            guard let data = data, error == nil else { // check for fundamental networking error
+                print("error=\(String(describing: error))")
+                return
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            let dataJson:Data? = responseString!.data(using: .utf8)
+            if let dJson = dataJson{
+                var dataDIctionary:[String:String]?
+                dataDIctionary = try! JSONSerialization.jsonObject(with: dJson,options:[]) as! [String:String]
+                if let dJsonDic = dataDIctionary{
+                    print(dJsonDic)
+                    if let results = dJsonDic["result"]{
+                        if results == "ok" {
+                            check = true
+                        }
+                    }
+                    sem.signal()
+                }
+            }
+        }
+        task.resume()
+        sem.wait()
+
+        return check
+    }
 }
 
