@@ -26,6 +26,12 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        viewWillAppear(true)
+        self.tableview.delegate = self
+        self.tableview.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         Name.text = userData.GetUser("name") + "님,"
         userType = userData.GetUser("type")
         if userType == "student"{
@@ -33,8 +39,6 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else {
             School.text = userData.GetUser("school")
         }
-        self.tableview.delegate = self
-        self.tableview.dataSource = self
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -110,7 +114,7 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 var okAction : UIAlertAction
                 okAction = UIAlertAction(title: "OK", style: .default){ (action) in
                     self.userData.SetUser(key: name, keyName: "name")
-                    self.Name.text = name
+                    self.Name.text = name + "님,"
                 }
                 alert.addAction(okAction)
                 self.present(alert, animated: false, completion: nil)
@@ -165,7 +169,6 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 var okAction : UIAlertAction
                 okAction = UIAlertAction(title: "OK", style: .default){ (action) in
                     self.userData.SetUser(key: school, keyName: "school")
-                    self.School.text = school
                 }
                 alert.addAction(okAction)
                 self.present(alert, animated: false, completion: nil)

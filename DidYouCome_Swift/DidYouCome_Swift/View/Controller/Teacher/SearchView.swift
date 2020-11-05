@@ -12,6 +12,7 @@ class SearchView: UIViewController, UITableViewDataSource, UISearchResultsUpdati
     
     @IBOutlet weak var TableView: UITableView!
     @IBOutlet var LoadingView: UIView!
+    @IBOutlet var goUpBtn: UIButton!
     let searchController = UISearchController(searchResultsController: nil)
     
     let viewModel: SearchViewModel = SearchViewModel()
@@ -23,6 +24,8 @@ class SearchView: UIViewController, UITableViewDataSource, UISearchResultsUpdati
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        goUpBtn.layer.cornerRadius = 0.5 * goUpBtn.bounds.size.width
+
         setView(name: "LoadingView", width: 414, height: 896)
         StudentData = viewModel.GetStudents()
         
@@ -35,11 +38,14 @@ class SearchView: UIViewController, UITableViewDataSource, UISearchResultsUpdati
         }
         filteredData = studentList
         
-        searchController.searchResultsUpdater = self
         definesPresentationContext = true
         TableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.scopeButtonTitles = ["All", "입실", "퇴실"]
         searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false;
+        
         TableView.delegate = self
         TableView.dataSource = self
         
@@ -94,5 +100,14 @@ class SearchView: UIViewController, UITableViewDataSource, UISearchResultsUpdati
         // tell the childviewcontroller it's contained in it's parent
         controller.didMove(toParent: self)
         controller.view.frame = CGRect(x: 0, y: 0, width: width, height: height)
+    }
+    
+    @IBAction func GoTop(_ sender: Any) {
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.TableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    override func touchesBegan (_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
     }
 }

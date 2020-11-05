@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -487,6 +488,18 @@
                                 <rect key="frame" x="0.0" y="101" width="414" height="712"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LC9-VN-TB1">
+                                <rect key="frame" x="339" y="742" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.96651536230000001" green="0.63727504010000002" blue="0.51761949060000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="arrow.up" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="GoTop:" destination="76C-tt-8Nd" eventType="touchUpInside" id="2gQ-vk-mGY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pam-fk-aN1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -495,6 +508,7 @@
                     <connections>
                         <outlet property="LoadingView" destination="3BP-UU-6pF" id="qAj-Na-rLk"/>
                         <outlet property="TableView" destination="Gwp-I9-LPo" id="PCc-ED-oOj"/>
+                        <outlet property="goUpBtn" destination="LC9-VN-TB1" id="s2f-IY-O11"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oug-bD-F2j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -878,6 +892,7 @@
     <color key="tintColor" red="0.92156862750000001" green="0.65098039220000004" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="Logo_Word" width="250" height="250"/>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="eye.slash" catalog="system" width="128" height="86"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="loading.gif" width="800" height="600"/>
