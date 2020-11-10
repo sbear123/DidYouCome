@@ -21,10 +21,11 @@ public class CheckSchoolJsonAction implements Action {
 		
 		// input
 		String str = IOUtils.toString(request.getReader());
+		System.out.println(str);
 		UserBean requestUser = gson.fromJson(str, UserBean.class); 
 		
 		ResultBean user = CheckSchoolDBBean.getInstance().check(requestUser.getSchool());
 		
-		return gson.toJson(user, UserBean.class);
+		return gson.toJson(user, ResultBean.class);
 	}
 }

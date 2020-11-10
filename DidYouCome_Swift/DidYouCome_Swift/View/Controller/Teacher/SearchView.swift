@@ -82,6 +82,10 @@ class SearchView: UIViewController, UITableViewDataSource, UISearchResultsUpdati
         return searchController.isActive && searchController.searchBar.text != ""  ? filteredData.count : studentList.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         filterSearchController(searchController.searchBar)
     }

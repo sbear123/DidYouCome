@@ -16,20 +16,20 @@ public class SchoolDBBean extends CommonDBBean{
 	int result = 0;
 	private Connection conn;
 	
-	public int change(String userid, String shool) {
+	public int change(String userid, String school) {
 		conn = getConnection();
 		if(conn==null) return 0;
 	
-		String sql1 = "select * from shool where name=?";
+		String sql1 = "select * from school where name=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql1);
-			pstmt.setString(1, shool);
+			pstmt.setString(1, school);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
 				changeUser(userid, rs.getInt("id"));
 			} else {
-				changeUser(userid, makeShool(shool));
+				changeUser(userid, makeShool(school));
 			}
 			rs.close();
 			pstmt.close();
@@ -75,7 +75,7 @@ public class SchoolDBBean extends CommonDBBean{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		String sql1 = "select * from shool where name=?";
+		String sql1 = "select * from school where name=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql1);
 			pstmt.setString(1, name);

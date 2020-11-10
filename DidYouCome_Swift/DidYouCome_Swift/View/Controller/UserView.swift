@@ -73,6 +73,7 @@ class UserView: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         if userType == "teacher"{
             if indexPath.row == 0 {
                 checkLogOut()

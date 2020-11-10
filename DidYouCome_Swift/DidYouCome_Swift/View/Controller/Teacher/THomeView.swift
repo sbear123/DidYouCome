@@ -55,6 +55,10 @@ class TeacherHomeView: UIViewController, UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     func setView(name: String, width:Int, height: Int) -> Void {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller: UIViewController = storyboard.instantiateViewController(withIdentifier: name) as UIViewController

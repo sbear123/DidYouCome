@@ -46,7 +46,7 @@ class SignUpView: UIViewController, UITextFieldDelegate {
                 let msg = "비밀번호가 너무 약합니다. 다시 입력해주세요."
                 makeAlert(title: "", msg: msg)
             }
-            else if viewModel.CheckSchool(school: school.text!) {
+            else if !viewModel.CheckSchool(school: school.text!) {
                 let msg = "존재하지 않는 학교 입니다. 다시 입력해주세요."
                 makeAlert(title: "", msg: msg)
             }
