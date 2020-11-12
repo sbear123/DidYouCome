@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class TypeDBBean extends CommonDBBean {
-	public String name(int id) {
+	public String name(int id, Connection conn) {
 		String type = "";
-		Connection conn = getConnection();
-		if(conn==null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from usertype where id=?";
 		try {
@@ -27,7 +24,6 @@ public class TypeDBBean extends CommonDBBean {
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
 		return type;
 	}
 }

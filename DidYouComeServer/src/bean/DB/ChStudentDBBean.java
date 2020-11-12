@@ -27,7 +27,7 @@ public class ChStudentDBBean extends CommonDBBean{
 		String sql = "select * from user where school=? and type=0";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, getschool(userid));
+			pstmt.setInt(1, getschool(userid,conn));
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				result = new CheckBean();
@@ -45,17 +45,15 @@ public class ChStudentDBBean extends CommonDBBean{
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return list;
 	}
 	
-	private int getschool(String id) {
+	private int getschool(String id, Connection conn) {
 		int school = 0;
-		Connection conn = getConnection();
-		if(conn==null) return 0;
-		System.out.println("conn");
 		
 		String sql = "select * from user where userid=?";
 		try {
@@ -71,7 +69,6 @@ public class ChStudentDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
 		return school;
 	}
 }

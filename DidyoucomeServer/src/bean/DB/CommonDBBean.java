@@ -26,6 +26,7 @@ public class CommonDBBean {
 		if(conn!=null) {
 			try {
 				conn.close();
+				conn = null;
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

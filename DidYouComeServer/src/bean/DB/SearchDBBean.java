@@ -28,7 +28,7 @@ public class SearchDBBean extends CommonDBBean{
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, ("%"+name+"%"));
-			pstmt.setInt(2, getschool(id));
+			pstmt.setInt(2, getschool(id, conn));
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
 				result = new CheckBean();
@@ -46,17 +46,15 @@ public class SearchDBBean extends CommonDBBean{
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return list;
 	}
 	
-	private int getschool(String id) {
+	private int getschool(String id, Connection conn) {
 		int school = 0;
-		Connection conn = getConnection();
-		if(conn==null) return 0;
-		System.out.println("conn");
 		
 		String sql = "select * from user where userid=?";
 		try {
@@ -72,7 +70,6 @@ public class SearchDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
 		return school;
 	}
 }

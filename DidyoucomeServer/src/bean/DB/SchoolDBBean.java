@@ -27,25 +27,22 @@ public class SchoolDBBean extends CommonDBBean{
 			
 			ResultSet rs = pstmt.executeQuery();
 			if(rs.next()) {
-				changeUser(userid, rs.getInt("id"));
+				changeUser(userid, rs.getInt("id"), conn);
 			} else {
-				changeUser(userid, makeShool(school));
+				changeUser(userid, makeShool(school, conn),conn);
 			}
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
 				e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-
-		closeConnection(conn);
+		
 		return result;
 	}
 	
-	public void changeUser(String userid, int shool) {
-		Connection conn = getConnection();
-		if(conn==null) return;
-		System.out.println("conn");
-		
+	public void changeUser(String userid, int shool, Connection conn) {
 		String sql = "UPDATE user SET `school` =? WHERE (`userid`=?);";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -57,12 +54,10 @@ public class SchoolDBBean extends CommonDBBean{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		closeConnection(conn);
 	}
 	
 
-	private int makeShool(String name) {
+	private int makeShool(String name, Connection conn) {
 		int id = 0;
 		String sql = "insert into school(`name`) values (?)";
 		try {
@@ -88,6 +83,7 @@ public class SchoolDBBean extends CommonDBBean{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return id;
 	}
 }

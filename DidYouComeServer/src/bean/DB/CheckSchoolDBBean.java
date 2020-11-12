@@ -34,9 +34,10 @@ public class CheckSchoolDBBean  extends CommonDBBean{
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return result;
 	}
 	

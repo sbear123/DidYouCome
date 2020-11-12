@@ -33,13 +33,14 @@ public class CheckInDBBean extends CommonDBBean{
 			if(pstmt!=null) pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
 		UserBean user = new UserBean();
 		user.setCheckType("입실");
 		user.setTime(time.getTime());
 		
-		closeConnection(conn);
 		return user;
 	}
 }

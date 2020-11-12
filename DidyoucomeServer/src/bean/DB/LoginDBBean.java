@@ -32,14 +32,16 @@ public class LoginDBBean extends CommonDBBean{
 				user.setUserId(rs.getString("userid"));
 				user.setPassword(rs.getString("password"));
 				GetTypeDBBean type = new GetTypeDBBean();
-				user.setType(type.type(rs.getInt("type")));
+				user.setType(type.type(rs.getInt("type"),conn));
 			}
 			rs.close();
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
-		closeConnection(conn);
+		
 		return user;
 	}
 }

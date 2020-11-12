@@ -34,7 +34,7 @@ public class GetUserDBBean extends CommonDBBean{
 				}
 				result.setName(rs.getString("name"));
 				GetSchoolDBBean school = new GetSchoolDBBean();
-				result.setSchool(school.name(rs.getInt("school")));
+				result.setSchool(school.name(rs.getInt("school"),conn));
 				result.setPassword(rs.getString("password"));
 				result.setTime(rs.getString("time"));
 				result.setUserId(rs.getString("userid"));
@@ -44,9 +44,10 @@ public class GetUserDBBean extends CommonDBBean{
 			pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return result;
 	}
 }

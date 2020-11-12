@@ -7,11 +7,8 @@ import java.sql.SQLException;
 
 public class GetTypeDBBean extends CommonDBBean{
 	
-	public String type(int id) {
+	public String type(int id, Connection conn) {
 		String type = "";
-		Connection conn = getConnection();
-		if(conn==null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from usertype where id=?";
 		try {
@@ -28,15 +25,11 @@ public class GetTypeDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
 		return type;
 	}
 	
-	public int id(String type) {
+	public int id(String type, Connection conn) {
 		int id = 0;
-		Connection conn = getConnection();
-		if(conn==null) return 0;
-		System.out.println("conn");
 		
 		String sql = "select * from usertype where type=?";
 		try {
@@ -53,8 +46,6 @@ public class GetTypeDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
-		System.out.println(id);
 		return id;
 	}
 }

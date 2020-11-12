@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class GetSchoolDBBean extends CommonDBBean{
-	public String name(int id) {
+	public String name(int id, Connection conn) {
 		String name = "";
-		Connection conn = getConnection();
-		if(conn==null) return null;
-		System.out.println("conn");
 		
 		String sql = "select * from school where id=?";
 		try {
@@ -27,15 +24,11 @@ public class GetSchoolDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
 		return name;
 	}
 	
-	public int id(String name) {
+	public int id(String name, Connection conn) {
 		int id = 0;
-		Connection conn = getConnection();
-		if(conn==null) return 0;
-		System.out.println("conn");
 		
 		String sql = "select * from school where name=?";
 		try {
@@ -52,8 +45,6 @@ public class GetSchoolDBBean extends CommonDBBean{
 			e.printStackTrace();
 		}
 		
-		closeConnection(conn);
-		System.out.println(id);
 		return id;
 	}
 }

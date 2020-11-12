@@ -37,9 +37,10 @@ public class RegisterDBBean extends CommonDBBean {
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				closeConnection(conn);
 			}
-	
-			closeConnection(conn);
+			
 			return result;
 		}
 }

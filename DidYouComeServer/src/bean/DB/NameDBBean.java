@@ -28,9 +28,10 @@ public class NameDBBean extends CommonDBBean{
 			if(pstmt!=null) pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection(conn);
 		}
 		
-		closeConnection(conn);
 		return result;
 	}
 }
