@@ -12,11 +12,15 @@
 
 <hr>
 <h4>학생 화면</h4>
-<img src="https://user-images.githubusercontent.com/52943905/99951032-c8c11580-2dc0-11eb-93ed-75d240366d6b.png" width="20%"></img>
-<img src="https://user-images.githubusercontent.com/52943905/99951658-c6ab8680-2dc1-11eb-9794-cff24831ac1a.png" width="20%"></img>
-<img src="https://user-images.githubusercontent.com/52943905/99951652-c4492c80-2dc1-11eb-848d-0b54624b427f.png" width="20%"></img>
+<div>
+   <img src="https://user-images.githubusercontent.com/52943905/99951032-c8c11580-2dc0-11eb-93ed-75d240366d6b.png" width="20%"></img>
+   <img src="https://user-images.githubusercontent.com/52943905/99951998-505b5400-2dc2-11eb-8153-40c199a022e3.png" width="20%"></img>
+</div>
 
 <hr>
 <h4>관리자 화면</h4>
-<img src="https://user-images.githubusercontent.com/52943905/99951656-c57a5980-2dc1-11eb-982a-0c2d01ea9a39.png" width="20%"></img>
-<img src="https://user-images.githubusercontent.com/52943905/99951658-c6ab8680-2dc1-11eb-9794-cff24831ac1a.png" width="20%"></img>
+<div>
+   <img src="https://user-images.githubusercontent.com/52943905/99951652-c4492c80-2dc1-11eb-848d-0b54624b427f.png" width="20%"></img>
+   <img src="https://user-images.githubusercontent.com/52943905/99951656-c57a5980-2dc1-11eb-982a-0c2d01ea9a39.png" width="20%"></img>
+   <img src="https://user-images.githubusercontent.com/52943905/99951658-c6ab8680-2dc1-11eb-9794-cff24831ac1a.png" width="20%"></img>
+</div>
