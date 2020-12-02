@@ -27,7 +27,8 @@ public class RegisterDBBean extends CommonDBBean {
 				pstmt.setString(1, user.getUserid());
 				pstmt.setString(2, user.getPassword());
 				pstmt.setString(3, user.getName());
-				pstmt.setInt(4, user.getSchoolnum());
+				GetSchoolDBBean getSchool = new GetSchoolDBBean();
+				pstmt.setInt(4, getSchool.id(user.getSchool(), conn));
 				pstmt.setInt(5, 0);
 				pstmt.setInt(6, 0);
 				pstmt.setString(7, time.getTime());

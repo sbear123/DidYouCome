@@ -37,6 +37,7 @@ class LoginView: UIViewController, UITextFieldDelegate {
             if result == "fail"{
                 let msg = "아이디 혹은 비밀번호가 틀렸습니다. 다시 확인해주세요."
                 makeAlert(title: "로그인 실패", msg: msg, type: nil)
+                return
             }
             viewModel.AutoLogin(userid: id.text!)
             UserDefaults.standard.set(result, forKey: "type")
@@ -44,6 +45,7 @@ class LoginView: UIViewController, UITextFieldDelegate {
             let msg = "로그인에 성공하셨습니다."
             makeAlert(title: "성공", msg: msg, type: result)
             self.Loading.isHidden = false
+            return
         }
         let msg = "입력이 안된곳이 있습니다. 확인해주세요."
         makeAlert(title: "실패", msg: msg, type: nil)
